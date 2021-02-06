@@ -7,6 +7,7 @@
   --right-btn-hover-color: rgba(28, 122, 28, 1);
   --hover-width: 75%;
   --other-width: 25%;
+  --speed: 1000ms;
 }
 
 * {
@@ -51,11 +52,13 @@ h1 {
 .split.left .btn:hover {
   background-color: var(--left-btn-hover-color);
   border-color: var(--left-btn-hover-color);
+  transition: all 0.3s ease-in;
 }
 
 .split.right .btn:hover {
   background-color: var(--right-btn-hover-color);
   border-color: var(--right-btn-hover-color);
+  transition: all 0.3s ease-in;
 }
 
 .container {
@@ -94,6 +97,13 @@ h1 {
   background-size: cover;
 }
 
+.split.right,
+.split.left,
+.split.left::before,
+.split.right::before {
+  transition: all var(--speed) ease-in-out;
+}
+
 .split.right::before {
   content: '';
   position: absolute;
@@ -116,4 +126,16 @@ h1 {
 
 .hover-right .left {
   width: var(--other-width);
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+    top: 30%;
+  }
+
+  .btn {
+    padding: 1.2rem;
+    width: 12rem;
+  }
 }
